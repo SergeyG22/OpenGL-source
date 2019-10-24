@@ -1,5 +1,4 @@
 #include "parameters.h"
-#include <string>
 #include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
 
@@ -7,7 +6,7 @@
 void Parameters::load_texture()
 {
 	sf::Image data_img;
-	data_img.loadFromFile("grass.png");
+	data_img.loadFromFile("text.png");
 	GLuint textureID;
 	glGenTextures(1, &textureID);
 	glBindTexture(GL_TEXTURE_2D, textureID);

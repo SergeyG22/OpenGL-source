@@ -24,14 +24,8 @@ int main()
 	ShowCursor(FALSE);
 	glClearColor(0.3, 1.0, 1.0, 1.0);
 	Control control_mouse_display;
-	Draw object;
-	
+	Draw object;	
 	Parameters set;
-
-
-	
-
-
 
 	while (window.isOpen())
 	{
@@ -62,13 +56,13 @@ int main()
 			control_mouse_display.vision_on_display();
 			control_mouse_display.buttons();
 
-	//		object.draw_coordinate_XYZ();
 
 
 			set.load_texture();
 			object.set_position_object(0, 0, 0);
-			object.rotate_object();
-			object.draw_cube();
+			object.rotate_cube();
+		//	object.draw_cube();
+			object.draw_cylinder();
 		//	object.draw_color_cube();
 		    window.display();
 	

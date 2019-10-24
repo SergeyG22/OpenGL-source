@@ -5,6 +5,7 @@
 #include "draw_object.h"
 
 #define GL_CLAMP_TO_EDGE 0x812F
+#define PI 3.141592753
 
 void Draw::draw_coordinate_XYZ()
 {
@@ -50,6 +51,79 @@ void Draw::draw_line_of_rotate()
 		glEnd();
 	
 }
+
+void Draw::draw_cylinder()
+{
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_TEXTURE_2D);
+	//============= !!!!!!!!!!!!!!!!
+
+	glRotatef(rotate_cube_angle, x_vector_angle, y_vector_angle, z_vector_angle);
+	glTranslatef(translate_x, translate_y, translate_z);
+
+	//============== !!!!!!!!!!!!!!!!
+	glCullFace(GL_BACK);
+		GLfloat x = 0.0;
+		GLfloat y = 0.0;
+		GLfloat angle = 0.0;
+		GLfloat angle_stepsize = 0.01;
+		double radius = 30;
+
+		glBegin(GL_QUAD_STRIP);
+		angle = 0.0;
+		while (angle < 2 * PI) {
+			x = radius * cos(angle);
+			y = radius * sin(angle);
+			const float tc = (angle / (float)(2 * PI));
+			glTexCoord2f(tc, 0.0);
+			glVertex3f(x, y, 60.0);
+			glTexCoord2f(tc, 1.0);
+			glVertex3f(x, y, 0.0);
+			angle = angle + angle_stepsize;
+		}
+		glVertex3f(radius, 0.0, 60.0);
+		glVertex3f(radius, 0.0, 0.0);
+		glEnd();
+		glDisable(GL_TEXTURE_2D);
+		
+		glBegin(GL_POLYGON);
+		angle = 0.0;
+		while (angle < 2 * PI) {
+			x = radius * cos(angle);
+			y = radius * sin(angle);
+			glVertex3f(x, y, 60.0);
+			angle = angle + angle_stepsize;
+		}
+		
+		glVertex3f(radius, 0.0, 60.0);
+		glEnd();
+		
+		glBegin(GL_POLYGON);
+		angle = 0.0;
+		while (angle < 2 * PI) {
+			x = radius * cos(angle);
+			y = radius * sin(angle);
+			glVertex3f(x, y, -30.0);
+			angle = angle + angle_stepsize;
+		}
+
+		glVertex3f(radius, 0.0, -30.0);
+		glEnd();
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 void Draw::draw_cube()
 {
@@ -232,7 +306,7 @@ void Draw::move_xy()
 
 }
 
-void Draw::rotate_object()
+void Draw::rotate_cube()
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
@@ -242,7 +316,6 @@ void Draw::rotate_object()
 	{
 		rotate_cube_angle -= 5;
 	}
-
 }
 
 
