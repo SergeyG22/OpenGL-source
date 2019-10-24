@@ -20,11 +20,11 @@ POINT mousexy;
 int main()
 {
 
-	sf::RenderWindow window(sf::VideoMode(1600, 1200), "gaming machine", sf::Style::Fullscreen);
+	sf::RenderWindow window(sf::VideoMode(1600, 1200), "gaming machine", sf::Style::None);
 	ShowCursor(FALSE);
 	glClearColor(0.3, 1.0, 1.0, 1.0);
 	Control control_mouse_display;
-	Draw object;	
+	CilynderA object;
 
 	while (window.isOpen())
 	{
@@ -54,11 +54,16 @@ int main()
 
 			control_mouse_display.vision_on_display();
 			control_mouse_display.buttons();
+			//=============
 
+			CilynderB B;
+			B.load_texture();
+
+			//===========
 			object.load_texture();
-		//	object.set_position_object(0, 0, 0);
 			object.rotate_figure();
-		//	object.cube();
+
+			object.draw_coordinate_XYZ();
 			object.cylinder();
 		    window.display();
 	

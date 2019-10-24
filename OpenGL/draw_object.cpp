@@ -7,7 +7,7 @@
 #define GL_CLAMP_TO_EDGE 0x812F
 #define PI 3.141592753
 
-void Draw::draw_coordinate_XYZ() // Отрисовывает координаты
+void CilynderA::draw_coordinate_XYZ() // Отрисовывает координаты
 {
 	glLineWidth(10);
 	glBegin(GL_LINES);
@@ -41,7 +41,7 @@ void Draw::draw_coordinate_XYZ() // Отрисовывает координаты
 }
 
 
-void Draw::cylinder() // Отрисовывает цилиндр
+void CilynderA::cylinder() // Отрисовывает цилиндр
 {
 	
 	glColor4f(1.0, 1.0, 1.0, 0.9);
@@ -106,113 +106,7 @@ void Draw::cylinder() // Отрисовывает цилиндр
 
 
 
-
-
-
-
-
-
-
-
-
-
-/*
-void Draw::cube()
-{
-
-	glEnable(GL_CULL_FACE);
-	glEnable(GL_TEXTURE_2D);
-
-	glCullFace(GL_BACK);
-
-	glRotatef(rotate, x_vector_angle, y_vector_angle, z_vector_angle);
-	glTranslatef(translate_x, translate_y, translate_z);
-
-	glBegin(GL_POLYGON);
-	glColor3f(1.0, 1.0, 1.0);
-	glTexCoord2f(0.0, 0.0);
-	glVertex3f(50, -50, 50);
-	glTexCoord2f(0.0, -1.0);
-	glVertex3f(50, 50, 50);
-	glTexCoord2f(-1.0, -1.0);
-	glVertex3f(-50, 50, 50);
-	glTexCoord2f(-1.0, 0.0);
-	glVertex3f(-50, -50, 50);
-	glEnd();
-
-
-	glBegin(GL_POLYGON);
-	glColor3f(1.0, 1.0, 1.0);
-	glTexCoord2f(0.0, 0.0);
-	glVertex3f(50, -50, -50);
-	glTexCoord2f(-1.0, 0.0);
-	glVertex3f(50, 50, -50);
-	glTexCoord2f(-1.0, -1.0);
-	glVertex3f(50, 50, 50);
-	glTexCoord2f(0.0, -1.0);
-	glVertex3f(50, -50, 50);
-	glEnd();
-
-
-	
-	glBegin(GL_POLYGON);//
-	glColor3f(1.0, 1.0, 1.0);
-	glTexCoord2f(0.0, 0.0);
-	glVertex3f(-50, -50, 50);
-	glTexCoord2f(-1.0, 0.0);
-	glVertex3f(-50, 50, 50);
-	glTexCoord2f(-1.0, -1.0);
-	glVertex3f(-50, 50, -50);
-	glTexCoord2f(-1.0, 0.0);
-	glVertex3f(-50, -50, -50);
-	glEnd();
-	
-
-	glBegin(GL_POLYGON);
-	glColor3f(1.0, 1.0, 1.0);
-	glTexCoord2f(0.0, 0.0);
-	glVertex3f(50, 50, 50);
-	glTexCoord2f(-1.0, 0.0);
-	glVertex3f(50, 50, -50);
-	glTexCoord2f(-1.0, -1.0);
-	glVertex3f(-50, 50, -50);
-	glTexCoord2f(0.0, -1.0);
-	glVertex3f(-50, 50, 50);
-	glEnd();
-	
-
-	glBegin(GL_POLYGON);
-	glColor3f(1.0, 1.0, 1.0);
-	glVertex3f(50, -50, -50);
-	glTexCoord2f(0.0, 0.0);
-	glVertex3f(-50, -50, -50);
-	glTexCoord2f(-1.0, 0.0);
-	glVertex3f(-50, 50, -50);
-	glTexCoord2f(-1.0, -1.0);
-	glVertex3f(50, 50, -50);
-	glTexCoord2f(0.0, -1.0);
-	glEnd();
-	
-
-	glBegin(GL_POLYGON);
-	glColor3f(1.0, 1.0, 1.0);
-	glVertex3f(50, -50, 50);
-	glTexCoord2f(0.0, 0.0);
-	glVertex3f(-50, -50, 50);
-	glTexCoord2f(-1.0, 0.0);
-	glVertex3f(-50, -50, -50);
-	glTexCoord2f(-1.0, -1.0);
-	glVertex3f(50, -50, -50);
-	glTexCoord2f(0.0, -1.0);
-	glEnd();
-	glDisable(GL_TEXTURE_2D);
-}*/
-
-
-
-
-
-void Draw::move() // движение в трехмерном пространстве
+void CilynderA::move() // движение в трехмерном пространстве
 {
 
 	 if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
@@ -234,7 +128,7 @@ void Draw::move() // движение в трехмерном пространстве
 
 }
 
-void Draw::rotate_figure()
+void CilynderA::rotate_figure() // вращение фигуры
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
@@ -246,17 +140,28 @@ void Draw::rotate_figure()
 	}
 }
 
-void Draw::load_texture()
+void CilynderA::load_texture()
 {
 	sf::Image data_img;
-	data_img.loadFromFile("text.png");
+	data_img.loadFromFile("texture1.png");
 	GLuint textureID;
 	glGenTextures(1, &textureID);
 	glBindTexture(GL_TEXTURE_2D, textureID);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexImage2D(GL_TEXTURE_2D, 0, 3, 128, 128, 0, GL_RGBA, GL_UNSIGNED_BYTE, data_img.getPixelsPtr());
+}
 
+void CilynderB::load_texture()
+{
+	sf::Image data_img;
+	data_img.loadFromFile("texture2.png");
+	GLuint textureID;
+	glGenTextures(1, &textureID);
+	glBindTexture(GL_TEXTURE_2D, textureID);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexImage2D(GL_TEXTURE_2D, 0, 3, 128, 128, 0, GL_RGBA, GL_UNSIGNED_BYTE, data_img.getPixelsPtr());
 }
 
 
