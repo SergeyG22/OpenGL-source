@@ -39,16 +39,16 @@ void Draw::draw_coordinate_XYZ()
 	glEnd();
 }
 
-void Draw::draw_line_of_rotate(bool set = false)
+void Draw::draw_line_of_rotate()
 {
-	if (set) {
+	
 		glLineWidth(10);
 		glColor3f(0, 0, 1);
 		glBegin(GL_LINES);
 		glVertex3f(0.0, 0.0, 0.0);
 		glVertex3f(x_vector_angle, y_vector_angle, z_vector_angle);
 		glEnd();
-	}
+	
 }
 
 void Draw::draw_cube()
@@ -101,17 +101,6 @@ void Draw::draw_cube()
 	glVertex3f(-50, -50, -50);
 	glEnd();
 	
-	
-
-	
-
-	
-
-
-
-
-
-	
 
 	glBegin(GL_POLYGON);
 	glColor3f(1.0, 1.0, 1.0);
@@ -154,7 +143,7 @@ void Draw::draw_cube()
 	
 
 }
-
+/*
 void Draw::draw_color_cube()
 {
 
@@ -214,24 +203,29 @@ void Draw::draw_color_cube()
 	glEnd();
 
 	glDisable(GL_BLEND);
-}
+}*/
+
+
+
+
+
 
 void Draw::move_xy()
 {
 
-	 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	 if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
 		translate_y += 10;
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
 		translate_y -= 10;
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		translate_x += 10;
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
 		translate_x -= 10;
 	}
@@ -248,7 +242,6 @@ void Draw::rotate_object()
 	{
 		rotate_cube_angle -= 5;
 	}
-
 
 }
 

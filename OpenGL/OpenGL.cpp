@@ -20,16 +20,15 @@ POINT mousexy;
 int main()
 {
 
-	sf::RenderWindow window(sf::VideoMode(1600,1200), "Rotate_cube", sf::Style::None);
+	sf::RenderWindow window(sf::VideoMode(1600,1200), "gaming machine");
 	ShowCursor(FALSE);
 	glClearColor(0.3, 1.0, 1.0, 1.0);
 	Control control_mouse_display;
-	Draw object[10];
+	Draw object;
 	
 	Parameters set;
 
-	Object cube_two;
-	int x = 0;
+
 	
 
 
@@ -62,47 +61,16 @@ int main()
 
 			control_mouse_display.vision_on_display();
 			control_mouse_display.buttons();
-			object[0].draw_coordinate_XYZ();
-			set.load_texture("fox.png");//"grass.png","fox.png"
 
-			object[1].set_position_object(50, 50, 0);		
-			object[1].draw_cube();
-
-			
+	//		object.draw_coordinate_XYZ();
 
 
-				for (int i = 2, x = 100; i < 10; i++)
-				{
-					object[i].set_position_object(0, x, 0);
-					object[i].draw_cube();
-				}
-
-				for (int i = 2, x = 100; i < 10; i++)
-				{
-					object[i].set_position_object(x, 0, 0);
-					object[i].draw_cube();
-				}
-
-				for (int i = 2, x = 100; i < 10; i++)
-				{
-					object[i].set_position_object(0, 0, -x);
-					object[i].draw_cube();
-				}
-			
-				for (int i = 2, x = 100; i < 10; i++)
-				{
-					object[i].set_position_object(0, 0, x);
-					object[i].draw_cube();
-				}
-		/*	set.load_texture("grass.png");
-			cube_two.set_position_object(100, 100,0);
-			cube_two.draw_cube();
-			cube_two.draw_color_cube();
-			cube_two.set_color_cube(0, 1, 0);			
-			*/
-
-
-		window.display();
+			set.load_texture();
+			object.set_position_object(0, 0, 0);
+			object.rotate_object();
+			object.draw_cube();
+		//	object.draw_color_cube();
+		    window.display();
 	
 	}
 	

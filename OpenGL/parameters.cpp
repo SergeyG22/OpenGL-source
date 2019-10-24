@@ -4,10 +4,10 @@
 #include <SFML/OpenGL.hpp>
 
 
-void Parameters::load_texture(std::string name_texture)
+void Parameters::load_texture()
 {
 	sf::Image data_img;
-	data_img.loadFromFile(name_texture);
+	data_img.loadFromFile("grass.png");
 	GLuint textureID;
 	glGenTextures(1, &textureID);
 	glBindTexture(GL_TEXTURE_2D, textureID);

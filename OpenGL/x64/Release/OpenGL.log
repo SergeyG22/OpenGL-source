@@ -1,12 +1,8 @@
 ﻿  OpenGL.cpp
-c:\users\dolba\source\repos\opengl\opengl\opengl.cpp(25): warning C4305: аргумент: усечение из "double" в "GLclampf"
-  draw_object.cpp
-c:\users\dolba\source\repos\opengl\opengl\draw_object.cpp(49): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
-c:\users\dolba\source\repos\opengl\opengl\draw_object.cpp(62): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
-c:\users\dolba\source\repos\opengl\opengl\draw_object.cpp(63): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
+D:\OpenGL-source\OpenGL\OpenGL.cpp(25,33): warning C4305: аргумент: усечение из "double" в "GLclampf"
   Создание кода
-  4 of 69 functions ( 5.8%) were compiled, the rest were copied from previous compilation.
+  2 of 77 functions ( 2.6%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
-  OpenGL.vcxproj -> C:\Users\Dolba\source\repos\OpenGL\x64\Release\OpenGL.exe
+  OpenGL.vcxproj -> D:\OpenGL-source\x64\Release\OpenGL.exe

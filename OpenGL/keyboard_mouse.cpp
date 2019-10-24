@@ -7,7 +7,6 @@
  void Control::buttons()
 {
 	
-
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 		{
 			x -= (float)sin(angleX / 180 * PI) * 5;
