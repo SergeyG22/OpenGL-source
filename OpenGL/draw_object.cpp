@@ -7,7 +7,7 @@
 #define GL_CLAMP_TO_EDGE 0x812F
 #define PI 3.141592753
 
-void Draw::draw_coordinate_XYZ()
+void Draw::draw_coordinate_XYZ() // Отрисовывает координаты
 {
 	glLineWidth(10);
 	glBegin(GL_LINES);
@@ -40,28 +40,17 @@ void Draw::draw_coordinate_XYZ()
 	glEnd();
 }
 
-void Draw::draw_line_of_rotate()
-{
-	
-		glLineWidth(10);
-		glColor3f(0, 0, 1);
-		glBegin(GL_LINES);
-		glVertex3f(0.0, 0.0, 0.0);
-		glVertex3f(x_vector_angle, y_vector_angle, z_vector_angle);
-		glEnd();
-	
-}
 
-void Draw::draw_cylinder()
+void Draw::cylinder() // Отрисовывает цилиндр
 {
+	
+	glColor4f(1.0, 1.0, 1.0, 0.9);
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_TEXTURE_2D);
-	//============= !!!!!!!!!!!!!!!!
-
-	glRotatef(rotate_cube_angle, x_vector_angle, y_vector_angle, z_vector_angle);
+	glRotatef(rotate, x_vector_angle, y_vector_angle, z_vector_angle);
 	glTranslatef(translate_x, translate_y, translate_z);
 
-	//============== !!!!!!!!!!!!!!!!
+	
 	glCullFace(GL_BACK);
 		GLfloat x = 0.0;
 		GLfloat y = 0.0;
@@ -86,28 +75,31 @@ void Draw::draw_cylinder()
 		glEnd();
 		glDisable(GL_TEXTURE_2D);
 		
-		glBegin(GL_POLYGON);
+		
+		glBegin(GL_POLYGON);		
 		angle = 0.0;
 		while (angle < 2 * PI) {
 			x = radius * cos(angle);
 			y = radius * sin(angle);
+			glColor3f(1.0, 0.0, 1.0);
 			glVertex3f(x, y, 60.0);
+			
 			angle = angle + angle_stepsize;
-		}
-		
+		}		
 		glVertex3f(radius, 0.0, 60.0);
 		glEnd();
 		
-		glBegin(GL_POLYGON);
+		glCullFace(GL_FRONT);
+		glBegin(GL_POLYGON);		
 		angle = 0.0;
 		while (angle < 2 * PI) {
 			x = radius * cos(angle);
 			y = radius * sin(angle);
-			glVertex3f(x, y, -30.0);
+			glColor3f(1.0, 0.0, 1.0);
+			glVertex3f(x, y, 0.0);
 			angle = angle + angle_stepsize;
 		}
-
-		glVertex3f(radius, 0.0, -30.0);
+		glVertex3f(radius, 0.0, 0.0);
 		glEnd();
 
 }
@@ -124,8 +116,8 @@ void Draw::draw_cylinder()
 
 
 
-
-void Draw::draw_cube()
+/*
+void Draw::cube()
 {
 
 	glEnable(GL_CULL_FACE);
@@ -133,7 +125,7 @@ void Draw::draw_cube()
 
 	glCullFace(GL_BACK);
 
-	glRotatef(rotate_cube_angle, x_vector_angle, y_vector_angle, z_vector_angle);
+	glRotatef(rotate, x_vector_angle, y_vector_angle, z_vector_angle);
 	glTranslatef(translate_x, translate_y, translate_z);
 
 	glBegin(GL_POLYGON);
@@ -214,77 +206,13 @@ void Draw::draw_cube()
 	glTexCoord2f(0.0, -1.0);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
-	
-
-}
-/*
-void Draw::draw_color_cube()
-{
-
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_ONE, GL_ONE);
-	glBegin(GL_POLYGON);
-	glColor4f(color_one, color_two, color_three, 0.0);
-	glVertex3f(55, -55, 55);
-	glVertex3f(55, 55, 55);
-	glVertex3f(-55, 55, 55);
-	glVertex3f(-55, -55, 55);
-	glEnd();
-
-
-	glBegin(GL_POLYGON);
-	glColor4f(color_one, color_two, color_three, 0.0);
-	glVertex3f(55, -55, -55);
-	glVertex3f(55, 55, -55);
-	glVertex3f(55, 55, 55);
-	glVertex3f(55, -55, 55);
-	glEnd();
-
-
-
-	glBegin(GL_POLYGON);
-	glColor4f(color_one, color_two, color_three, 0.0);
-	glVertex3f(-55, -55, 55);
-	glVertex3f(-55, 55, 55);
-	glVertex3f(-55, 55, -55);
-	glVertex3f(-55, -55, -55);
-	glEnd();
-
-
-	glBegin(GL_POLYGON);
-	glColor4f(color_one, color_two, color_three, 0.0);
-	glVertex3f(55, 55, 55);
-	glVertex3f(55, 55, -55);
-	glVertex3f(-55, 55, -55);
-	glVertex3f(-55, 55, 55);
-	glEnd();
-
-
-	glBegin(GL_POLYGON);
-	glColor4f(color_one, color_two, color_three, 0.0);
-	glVertex3f(55, -55, -55);
-	glVertex3f(-55, -55, -55);
-	glVertex3f(-55, 55, -55);
-	glVertex3f(55, 55, -55);
-	glEnd();
-
-	glBegin(GL_POLYGON);
-	glColor4f(color_one, color_two, color_three, 0.0);
-	glVertex3f(55, -55, 55);
-	glVertex3f(-55, -55, 55);
-	glVertex3f(-55, -55, -55);
-	glVertex3f(55, -55, -55);
-	glEnd();
-
-	glDisable(GL_BLEND);
 }*/
 
 
 
 
 
-
-void Draw::move_xy()
+void Draw::move() // движение в трехмерном пространстве
 {
 
 	 if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
@@ -306,16 +234,29 @@ void Draw::move_xy()
 
 }
 
-void Draw::rotate_cube()
+void Draw::rotate_figure()
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
-		rotate_cube_angle += 5;
+		rotate += 5;
 	}
 	else if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
 	{
-		rotate_cube_angle -= 5;
+		rotate -= 5;
 	}
+}
+
+void Draw::load_texture()
+{
+	sf::Image data_img;
+	data_img.loadFromFile("text.png");
+	GLuint textureID;
+	glGenTextures(1, &textureID);
+	glBindTexture(GL_TEXTURE_2D, textureID);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexImage2D(GL_TEXTURE_2D, 0, 3, 128, 128, 0, GL_RGBA, GL_UNSIGNED_BYTE, data_img.getPixelsPtr());
+
 }
 
 

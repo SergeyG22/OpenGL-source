@@ -5,7 +5,7 @@
 #include <gl/GLU.h>
 #include "keyboard_mouse.h"
 #include "draw_object.h"
-#include "parameters.h"
+
 
 
 
@@ -20,12 +20,11 @@ POINT mousexy;
 int main()
 {
 
-	sf::RenderWindow window(sf::VideoMode(1600,1200), "gaming machine");
+	sf::RenderWindow window(sf::VideoMode(1600, 1200), "gaming machine", sf::Style::Fullscreen);
 	ShowCursor(FALSE);
 	glClearColor(0.3, 1.0, 1.0, 1.0);
 	Control control_mouse_display;
 	Draw object;	
-	Parameters set;
 
 	while (window.isOpen())
 	{
@@ -56,14 +55,11 @@ int main()
 			control_mouse_display.vision_on_display();
 			control_mouse_display.buttons();
 
-
-
-			set.load_texture();
-			object.set_position_object(0, 0, 0);
-			object.rotate_cube();
-		//	object.draw_cube();
-			object.draw_cylinder();
-		//	object.draw_color_cube();
+			object.load_texture();
+		//	object.set_position_object(0, 0, 0);
+			object.rotate_figure();
+		//	object.cube();
+			object.cylinder();
 		    window.display();
 	
 	}

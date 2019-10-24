@@ -3,9 +3,6 @@
 #define KEYBOARD_MOUSE_H
 
 
-
-
-
 class Control
 {
 	int rotate_cube_angle = 0;
@@ -20,8 +17,8 @@ class Control
 	int heigh = 1200;
 	const float height = 0;
 public:
-	float angleX;
-	float angleY;
+	float angleX = 0.0;
+	float angleY = 0.0;
 	void buttons();
 	void vision_on_display();
 };
