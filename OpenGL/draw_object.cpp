@@ -48,7 +48,7 @@ void CilynderA::cylinder() // Отрисовывает цилиндр
 	glEnable(GL_CULL_FACE);
 	glEnable(GL_TEXTURE_2D);
 	glRotatef(rotate, x_vector_angle, y_vector_angle, z_vector_angle);
-	glTranslatef(translate_x, translate_y, translate_z);
+	glTranslatef(translate_x, translate_y, 70);
 
 	
 	glCullFace(GL_BACK);
@@ -104,7 +104,68 @@ void CilynderA::cylinder() // Отрисовывает цилиндр
 
 }
 
+void CilynderB::cylinder() // Отрисовывает цилиндр
+{
 
+	glColor4f(1.0, 1.0, 1.0, 0.9);
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_TEXTURE_2D);
+	glRotatef(rotate, x_vector_angle, y_vector_angle, z_vector_angle);
+	glTranslatef(translate_x, translate_y, translate_z);
+
+
+	glCullFace(GL_BACK);
+	GLfloat x = 0.0;
+	GLfloat y = 0.0;
+	GLfloat angle = 0.0;
+	GLfloat angle_stepsize = 0.01;
+	double radius = 30;
+
+	glBegin(GL_QUAD_STRIP);
+	angle = 0.0;
+	while (angle < 2 * PI) {
+		x = radius * cos(angle);
+		y = radius * sin(angle);
+		const float tc = (angle / (float)(2 * PI));
+		glTexCoord2f(tc, 0.0);
+		glVertex3f(x, y, 60.0);
+		glTexCoord2f(tc, 1.0);
+		glVertex3f(x, y, 0.0);
+		angle = angle + angle_stepsize;
+	}
+	glVertex3f(radius, 0.0, 60.0);
+	glVertex3f(radius, 0.0, 0.0);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+
+
+	glBegin(GL_POLYGON);
+	angle = 0.0;
+	while (angle < 2 * PI) {
+		x = radius * cos(angle);
+		y = radius * sin(angle);
+		glColor3f(1.0, 0.0, 1.0);
+		glVertex3f(x, y, 60.0);
+
+		angle = angle + angle_stepsize;
+	}
+	glVertex3f(radius, 0.0, 60.0);
+	glEnd();
+
+	glCullFace(GL_FRONT);
+	glBegin(GL_POLYGON);
+	angle = 0.0;
+	while (angle < 2 * PI) {
+		x = radius * cos(angle);
+		y = radius * sin(angle);
+		glColor3f(1.0, 0.0, 1.0);
+		glVertex3f(x, y, 0.0);
+		angle = angle + angle_stepsize;
+	}
+	glVertex3f(radius, 0.0, 0.0);
+	glEnd();
+
+}
 
 void CilynderA::move() // движение в трехмерном пространстве
 {
@@ -132,6 +193,18 @@ void CilynderA::rotate_figure() // вращение фигуры
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
+		rotate += 25;
+	}
+	else if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+	{
+		rotate -= 25; // СКОРОСТЬ ВРАЩЕНИЯ БАРАБАНА ЗАДАТЬ ДЛЯ КАЖДОГО!!!! РЕАЛИЗОВАТЬ ЧЕРЕЗ ТАЙМЕР !!!
+	}
+}
+
+void CilynderB::rotate_figure() // вращение фигуры
+{
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	{
 		rotate += 5;
 	}
 	else if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
@@ -139,6 +212,14 @@ void CilynderA::rotate_figure() // вращение фигуры
 		rotate -= 5;
 	}
 }
+
+
+
+
+
+
+
+
 
 void CilynderA::load_texture()
 {

@@ -24,8 +24,8 @@ int main()
 	ShowCursor(FALSE);
 	glClearColor(0.3, 1.0, 1.0, 1.0);
 	Control control_mouse_display;
-	CilynderA object;
-
+	CilynderA object1;
+	CilynderB object2;
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -56,15 +56,20 @@ int main()
 			control_mouse_display.buttons();
 			//=============
 
-			CilynderB B;
-			B.load_texture();
+			object2.load_texture();
+			object2.cylinder();
+		
+			//===========
+
+			object1.load_texture();
+			object1.cylinder();
 
 			//===========
-			object.load_texture();
-			object.rotate_figure();
 
-			object.draw_coordinate_XYZ();
-			object.cylinder();
+
+			object1.rotate_figure();
+	//		object1.draw_coordinate_XYZ();
+			
 		    window.display();
 	
 	}

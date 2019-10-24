@@ -1,6 +1,4 @@
-﻿  OpenGL.cpp
-  draw_object.cpp
-D:\OpenGL-source\OpenGL\OpenGL.cpp(25,33): warning C4305: аргумент: усечение из "double" в "GLclampf"
+﻿  draw_object.cpp
 D:\OpenGL-source\OpenGL\draw_object.cpp(47,30): warning C4305: аргумент: усечение из "double" в "GLfloat"
 D:\OpenGL-source\OpenGL\draw_object.cpp(50,52): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
 D:\OpenGL-source\OpenGL\draw_object.cpp(50,36): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
@@ -17,9 +15,25 @@ D:\OpenGL-source\OpenGL\draw_object.cpp(89,14): warning C4244: аргумент:
 D:\OpenGL-source\OpenGL\draw_object.cpp(96,15): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
 D:\OpenGL-source\OpenGL\draw_object.cpp(97,15): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
 D:\OpenGL-source\OpenGL\draw_object.cpp(102,14): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+D:\OpenGL-source\OpenGL\draw_object.cpp(110,30): warning C4305: аргумент: усечение из "double" в "GLfloat"
+D:\OpenGL-source\OpenGL\draw_object.cpp(113,52): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
+D:\OpenGL-source\OpenGL\draw_object.cpp(113,36): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
+D:\OpenGL-source\OpenGL\draw_object.cpp(113,20): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
+D:\OpenGL-source\OpenGL\draw_object.cpp(113,12): warning C4244: аргумент: преобразование "int" в "GLfloat", возможна потеря данных
+D:\OpenGL-source\OpenGL\draw_object.cpp(121,31): warning C4305: инициализация: усечение из "double" в "GLfloat"
+D:\OpenGL-source\OpenGL\draw_object.cpp(127,14): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
+D:\OpenGL-source\OpenGL\draw_object.cpp(128,14): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
+D:\OpenGL-source\OpenGL\draw_object.cpp(136,13): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+D:\OpenGL-source\OpenGL\draw_object.cpp(137,13): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+D:\OpenGL-source\OpenGL\draw_object.cpp(145,14): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
+D:\OpenGL-source\OpenGL\draw_object.cpp(146,14): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
+D:\OpenGL-source\OpenGL\draw_object.cpp(152,13): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+D:\OpenGL-source\OpenGL\draw_object.cpp(159,14): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
+D:\OpenGL-source\OpenGL\draw_object.cpp(160,14): warning C4244: =: преобразование "double" в "GLfloat", возможна потеря данных
+D:\OpenGL-source\OpenGL\draw_object.cpp(165,13): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
   Создание кода
-  7 of 80 functions ( 8.8%) were compiled, the rest were copied from previous compilation.
-    6 functions were new in current compilation
+  2 of 81 functions ( 2.5%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
     0 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
   OpenGL.vcxproj -> D:\OpenGL-source\x64\Release\OpenGL.exe
